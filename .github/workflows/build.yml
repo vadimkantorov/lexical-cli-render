@@ -14,7 +14,7 @@ jobs:
       - run: |
           cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
           
-          sed -i 's@"type":"module",@@' package.json
+          sed -i 's@"type": "module",@@' package.json
           cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
       
       - uses: actions/upload-artifact@v4
