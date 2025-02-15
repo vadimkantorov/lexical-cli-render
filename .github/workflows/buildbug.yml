@@ -54,6 +54,7 @@ jobs:
             "source": "Playground",
             "version": "0.24.0"
           }
+          EOF
       - run: |
           cat <<EOF > package.json
           {
