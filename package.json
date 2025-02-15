@@ -1,6 +1,5 @@
 {
   "name": "lexical-cli-render",
-  "type": "module",
   "private": true,
   "version": "0.24.0",
   "scripts": {},
