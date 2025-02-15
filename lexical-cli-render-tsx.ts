@@ -1,4 +1,4 @@
-import { EmojiNode } from "./src/nods/EmojiNode";
+import { EmojiNode } from "./src/nodes/EmojiNode";
 import { TextNode, $getRoot, $selectAll } from "lexical";
 import { createHeadlessEditor } from "@lexical/headless";
 import { $generateHtmlFromNodes } from "@lexical/html";
