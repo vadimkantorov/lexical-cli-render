@@ -615,5 +615,5 @@ jobs:
       - run: npm install
       
       - run: |
-          sed -i 's@"type": "module",@@' package.json
+          #sed -i 's@"type": "module",@@' package.json
           cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
