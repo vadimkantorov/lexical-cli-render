@@ -1,14 +1,14 @@
 {
   "name": "lexical-cli-render",
-  "type":"module",
+  "type": "module",
   "private": true,
   "version": "0.24.0",
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
     "@lexical/headless": "^0.24.0",
     "@lexical/html": "^0.24.0",
     "@lexical/react": "0.24.0",
+    "@types/jsdom": "^21.1.7",
     "jsdom": "^26.0.0",
     "lexical": "0.24.0",
     "react": "^18.2.0",
