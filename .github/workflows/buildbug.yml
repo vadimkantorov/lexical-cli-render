@@ -1,7 +1,7 @@
-name: build
+name: buildbug
 on: workflow_dispatch
 jobs:
-  build:
+  buildbug:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/setup-node@v4
