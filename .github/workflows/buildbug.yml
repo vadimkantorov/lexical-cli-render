@@ -159,6 +159,7 @@ jobs:
             const node = new EmojiNode(className, emojiText).setMode('token');
             return $applyNodeReplacement(node);
           }
+          
           EOF      
       
       - run: npm install
@@ -166,4 +167,4 @@ jobs:
       - run: |
           sed -i 's@"type": "module",@@' package.json
           cat EmojiNode.tsx
-          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          #cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
