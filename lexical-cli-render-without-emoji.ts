@@ -26,7 +26,8 @@ process.stdin.on("end", async () =>
 {
   try
   {
-    const editorStateJson = JSON.parse(input).editorState;
+    const editorStateJson = JSON.parse(input);
+    if('editorState' in editorStateJson) editorStateJson = editorStateJson.editorState;
     const editorState = editor.parseEditorState(editorStateJson);
     editor.setEditorState(editorState);    
     editor.update(() => { html = $generateHtmlFromNodes(editor, $selectAll()); });
