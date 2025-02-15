@@ -487,7 +487,7 @@ jobs:
       
       - run: |
           cat > lexical-cli-render-tsx.ts << 'EOF'
-          import { EmojiNode } from "./EmojiNode.tsx";
+          import { EmojiNode } from "./EmojiNode";
           import { TextNode, $getRoot, $selectAll } from "lexical";
           import { createHeadlessEditor } from "@lexical/headless";
           import { $generateHtmlFromNodes } from "@lexical/html";
@@ -615,5 +615,5 @@ jobs:
       - run: npm install
       
       - run: |
-          #sed -i 's@"type": "module",@@' package.json
+          sed -i 's@"type": "module",@@' package.json
           cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
