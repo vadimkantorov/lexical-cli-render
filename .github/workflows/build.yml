@@ -12,7 +12,12 @@ jobs:
       - run: npm install
       
       - run: |
-          cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
-          
-          sed -i 's@"type": "module",@@' package.json
-          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts > foo.html
+          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts > bar.html
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lexicalplaygroundonlyassets
+          path: |
+            foo.html
+            bar.html
