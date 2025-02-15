@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: 23
       - run: |
-          cat <<EOF > package.json
+          cat << 'EOF' > package.json
           {
             "name": "lexical-cli-render",
             "type": "module",
@@ -74,7 +74,7 @@ jobs:
       #    EOF
       
       - run: |
-          cat <<EOF > EmojiNode.tsx
+          cat << 'EOF' > EmojiNode.tsx
           import type {
             EditorConfig,
             LexicalNode,
@@ -166,4 +166,4 @@ jobs:
       - run: |
           sed -i 's@"type": "module",@@' package.json
           cat EmojiNode.tsx
-          #cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
