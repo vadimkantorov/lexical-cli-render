@@ -165,4 +165,5 @@ jobs:
       
       - run: |
           sed -i 's@"type": "module",@@' package.json
-          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat EmojiNode.tsx
+          #cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
