@@ -1,12 +1,9 @@
 {
-  "name": "@lexical/react-rich-example",
+  "name": "lexical-cli-render",
+  "type":"module",
   "private": true,
   "version": "0.24.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
   },
   "dependencies": {
     "@lexical/headless": "^0.24.0",
@@ -15,13 +12,12 @@
     "jsdom": "^26.0.0",
     "lexical": "0.24.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.59",
     "@types/react-dom": "^18.2.19",
-    "@vitejs/plugin-react": "^4.2.1",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.11"
+    "typescript": "^5.2.2"
   }
 }

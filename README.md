@@ -7,6 +7,8 @@ Renders Facebook Lexical's EditorState serialized to JSON (see sample [`./sample
 # nodejs starting with version 22 supports native execution of TypeScript without prior transpilation: https://nodejs.org/en/learn/typescript/run-natively
 
 cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
+
+cat samples/playground.lexical.json | npx ts-node lexical-cli-render.tsx
 ```
 
 # References
