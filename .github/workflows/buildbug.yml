@@ -8,54 +8,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 23
-      - run: |
-          cat <<EOF > lexical.json
-          {
-            "editorState": {
-              "root": {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "detail": 0,
-                        "format": 0,
-                        "mode": "normal",
-                        "style": "",
-                        "text": "Welcome to the playground",
-                        "type": "text",
-                        "version": 1
-                      }
-                    ],
-                    "direction": "ltr",
-                    "format": "",
-                    "indent": 0,
-                    "type": "heading",
-                    "version": 1,
-                    "tag": "h1"
-                  },
-                  {
-                    "detail": 0,
-                    "format": 0,
-                    "mode": "token",
-                    "style": "",
-                    "text": "🙂",
-                    "type": "emoji",
-                    "version": 1,
-                    "className": "emoji happysmile"
-                  }
-                ],
-                "direction": "ltr",
-                "format": "",
-                "indent": 0,
-                "type": "root",
-                "version": 1
-              }
-            },
-            "lastSaved": 1739541749446,
-            "source": "Playground",
-            "version": "0.24.0"
-          }
-          EOF
       #- run: |
       #    cat <<EOF > package.json
       #    {
@@ -213,4 +165,4 @@ jobs:
       
       - run: |
           sed -i 's@"type": "module",@@' package.json
-          cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
