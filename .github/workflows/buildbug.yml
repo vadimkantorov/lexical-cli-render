@@ -1,0 +1,47 @@
+name: build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 23
+      - run: |
+          cat <<EOF > package.json
+          {
+            "name": "lexical-cli-render",
+            "type": "module",
+            "private": true,
+            "version": "0.24.0",
+            "scripts": {},
+            "dependencies": {
+              "@lexical/headless": "^0.24.0",
+              "@lexical/html": "^0.24.0",
+              "@lexical/react": "0.24.0",
+              "jsdom": "^26.0.0",
+              "lexical": "0.24.0",
+              "react": "^18.2.0",
+              "react-dom": "^18.2.0",
+              "ts-node": "^10.9.2"
+            },
+            "devDependencies": {
+              "@types/react": "^18.2.59",
+              "@types/react-dom": "^18.2.19",
+              "typescript": "^5.2.2"
+            }
+          }
+          EOF
+      
+      - run: npm install
+      
+      #- run: |
+      #    cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
+      #    
+      #    sed -i 's@"type": "module",@@' package.json
+      #    cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+      #
+      #- uses: actions/upload-artifact@v4
+      #  with:
+      #    name: lexicalplaygroundonlyassets
+      #    path: dist/
