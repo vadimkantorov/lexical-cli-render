@@ -11,3 +11,4 @@ cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
 
 # References
 - https://github.com/facebook/lexical/discussions/7177
+- https://github.com/nodejs/node
