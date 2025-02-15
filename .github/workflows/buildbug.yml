@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: 23
       - run: |
-          cat << 'EOF' > package.json
+          cat > package.json << 'EOF'
           {
             "name": "lexical-cli-render",
             "type": "module",
@@ -74,7 +74,7 @@ jobs:
       #    EOF
       
       - run: |
-          cat > EmojiNode.tsx <<-'END'
+          cat > EmojiNode.tsx << 'EOF'
             import type {
               EditorConfig,
               LexicalNode,
@@ -159,7 +159,7 @@ jobs:
               const node = new EmojiNode(className, emojiText).setMode('token');
               return $applyNodeReplacement(node);
             }
-          END
+          EOF
       
       - run: npm install
       
