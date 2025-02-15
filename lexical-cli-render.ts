@@ -8,9 +8,9 @@ import { LinkNode } from "@lexical/link";
 import { HashtagNode } from "@lexical/hashtag";
 import { ListNode, ListItemNode } from "@lexical/list";
 
-import { EmojiNode } from "./src/nodes/EmojiNode";
+//import { EmojiNode } from "./src/nodes/EmojiNode";
 
-let input = "", html = "";
+let input : string = "", html : string = "";
 const editor = createHeadlessEditor({
   editable: false,
   nodes: [TextNode, HeadingNode, QuoteNode, LinkNode, HashtagNode, ListNode, ListItemNode],
