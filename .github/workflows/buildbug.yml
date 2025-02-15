@@ -212,8 +212,3 @@ jobs:
       - run: |
           sed -i 's@"type": "module",@@' package.json
           cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
-      #
-      #- uses: actions/upload-artifact@v4
-      #  with:
-      #    name: lexicalplaygroundonlyassets
-      #    path: dist/
