@@ -1,4 +1,4 @@
-# lexical2html
+# lexical-cli-render
 Renders Facebook Lexical's EditorState serialized to JSON (see sample [`./samples/playground.lexical.json`](./samples/playground.lexical.json) and [`./samples/playground-without-emoji.lexical.json`](./samples/playground-without-emoji.lexical.json)) produced by exporting to JSON default content of https://playground.lexical.dev 
 
 ## Usage
