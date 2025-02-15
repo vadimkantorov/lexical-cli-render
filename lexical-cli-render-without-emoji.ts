@@ -1,4 +1,5 @@
-import { EmojiNode } from "./src/nodes/EmojiNode";
+
+
 import { TextNode, $getRoot, $selectAll } from "lexical";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { LinkNode } from "@lexical/link";
@@ -12,13 +13,14 @@ import { JSDOM } from 'jsdom';
 let input : string = "", html : string = "";
 const editor = createHeadlessEditor({
   editable: false,
-  nodes: [TextNode, HeadingNode, QuoteNode, LinkNode, HashtagNode, ListNode, ListItemNode, EmojiNode],
+  nodes: [TextNode, HeadingNode, QuoteNode, LinkNode, HashtagNode, ListNode, ListItemNode],
   onError: (error) => { throw error;},
 });
 
 const dom = new JSDOM();
 global.window = dom.window;
 global.document = dom.window.document;
+
 process.stdin.on("data", (chunk) => {  input += chunk; });
 process.stdin.on("end", async () => 
 {
