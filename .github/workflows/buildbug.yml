@@ -159,7 +159,7 @@ jobs:
               const node = new EmojiNode(className, emojiText).setMode('token');
               return $applyNodeReplacement(node);
             }
-          END      
+          END
       
       - run: npm install
       
