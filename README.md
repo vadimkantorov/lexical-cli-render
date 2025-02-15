@@ -13,4 +13,6 @@ cat samples/playground-without-emoji.lexical.json | node lexical-cli-render-with
 
 # References
 - https://github.com/facebook/lexical/discussions/7177
-- https://github.com/nodejs/node
+- https://github.com/TypeStrong/ts-node/issues/2086
+- https://github.com/orgs/nodejs/discussions/57070
+- https://nodejs.org/en/learn/typescript/run-natively
