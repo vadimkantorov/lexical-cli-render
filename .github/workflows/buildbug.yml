@@ -42,7 +42,7 @@ jobs:
                     "type": "emoji",
                     "version": 1,
                     "className": "emoji happysmile"
-                  },
+                  }
                 ],
                 "direction": "ltr",
                 "format": "",
