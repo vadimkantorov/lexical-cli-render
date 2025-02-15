@@ -8,6 +8,53 @@ jobs:
         with:
           node-version: 23
       - run: |
+          cat <<EOF > lexical.json
+          {
+            "editorState": {
+              "root": {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "detail": 0,
+                        "format": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "text": "Welcome to the playground",
+                        "type": "text",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "type": "heading",
+                    "version": 1,
+                    "tag": "h1"
+                  },
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "token",
+                    "style": "",
+                    "text": "🙂",
+                    "type": "emoji",
+                    "version": 1,
+                    "className": "emoji happysmile"
+                  },
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "root",
+                "version": 1
+              }
+            },
+            "lastSaved": 1739541749446,
+            "source": "Playground",
+            "version": "0.24.0"
+          }
+      - run: |
           cat <<EOF > package.json
           {
             "name": "lexical-cli-render",
@@ -35,7 +82,7 @@ jobs:
       
       - run: |
           cat <<EOF > lexical-cli-render-tsx.ts
-          import { EmojiNode } from "./src/nodes/EmojiNode";
+          import { EmojiNode } from "./EmojiNode";
           import { TextNode, $getRoot, $selectAll } from "lexical";
           import { createHeadlessEditor } from "@lexical/headless";
           import { $generateHtmlFromNodes } from "@lexical/html";
@@ -72,13 +119,99 @@ jobs:
           });
           EOF
       
+      - run: |
+          cat <<EOF > EmojiNode.tsx
+          import type {
+            EditorConfig,
+            LexicalNode,
+            NodeKey,
+            SerializedTextNode,
+            Spread,
+          } from 'lexical';
+
+          import {$applyNodeReplacement, TextNode} from 'lexical';
+
+          export type SerializedEmojiNode = Spread<
+            {
+              className: string;
+            },
+            SerializedTextNode
+          >;
+
+          export class EmojiNode extends TextNode {
+            __className: string;
+
+            static getType(): string {
+              return 'emoji';
+            }
+
+            static clone(node: EmojiNode): EmojiNode {
+              return new EmojiNode(node.__className, node.__text, node.__key);
+            }
+
+            constructor(className: string, text: string, key?: NodeKey) {
+              super(text, key);
+              this.__className = className;
+            }
+
+            createDOM(config: EditorConfig): HTMLElement {
+              const dom = document.createElement('span');
+              const inner = super.createDOM(config);
+              dom.className = this.__className;
+              inner.className = 'emoji-inner';
+              dom.appendChild(inner);
+              return dom;
+            }
+
+            updateDOM(prevNode: this, dom: HTMLElement, config: EditorConfig): boolean {
+              const inner = dom.firstChild;
+              if (inner === null) {
+                return true;
+              }
+              super.updateDOM(prevNode, inner as HTMLElement, config);
+              return false;
+            }
+
+            static importJSON(serializedNode: SerializedEmojiNode): EmojiNode {
+              return $createEmojiNode(
+                serializedNode.className,
+                serializedNode.text,
+              ).updateFromJSON(serializedNode);
+            }
+
+            exportJSON(): SerializedEmojiNode {
+              return {
+                ...super.exportJSON(),
+                className: this.getClassName(),
+              };
+            }
+
+            getClassName(): string {
+              const self = this.getLatest();
+              return self.__className;
+            }
+          }
+
+          export function $isEmojiNode(
+            node: LexicalNode | null | undefined,
+          ): node is EmojiNode {
+            return node instanceof EmojiNode;
+          }
+
+          export function $createEmojiNode(
+            className: string,
+            emojiText: string,
+          ): EmojiNode {
+            const node = new EmojiNode(className, emojiText).setMode('token');
+            return $applyNodeReplacement(node);
+          }
+          EOF      
+      
       - run: npm install
       
-      #- run: |
-      #    cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.ts
-      #    
-      #    sed -i 's@"type": "module",@@' package.json
-      #    cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+      - run: |
+          sed -i 's@"type": "module",@@' package.json
+          cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
       #
       #- uses: actions/upload-artifact@v4
       #  with:
