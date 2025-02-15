@@ -4,6 +4,7 @@ jobs:
   buildbug:
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 23
@@ -164,4 +165,4 @@ jobs:
       
       - run: |
           sed -i 's@"type": "module",@@' package.json
-          cat samples/playground.lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
