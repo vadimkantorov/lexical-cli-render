@@ -212,4 +212,6 @@ jobs:
       
       - run: |
           sed -i 's@"type": "module",@@' package.json
-          cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
+          cat lexical.json
+          cat package.json
+          #cat lexical.json | npx ts-node lexical-cli-render-tsx.ts
