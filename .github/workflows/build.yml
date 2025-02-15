@@ -12,7 +12,7 @@ jobs:
       - run: npm install
       
       - run: |
-          cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.js
+          cat samples/playground_without_emoji.lexical.json | node --experimental-transform-types lexical-cli-render.ts
           #cat samples/playground_without_emoji.lexical.json | node lexical-cli-render.js
       
       - uses: actions/upload-artifact@v4
