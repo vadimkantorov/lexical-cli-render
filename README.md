@@ -11,6 +11,11 @@ cat samples/playground.lexical.json | npx ts-node lexical-cli-render.ts
 cat samples/playground-without-emoji.lexical.json | node lexical-cli-render-without-emoji.ts
 ```
 
+# Future work
+- How to style the produced HTML tags? At the very least, how to ask lexical to add css classes to preserve the original node types? 
+- How to replace the produed `style="white-space: pre-wrap;"` with some CSS class?
+
+
 # References
 - https://github.com/facebook/lexical/discussions/7177
 - https://github.com/TypeStrong/ts-node/issues/2086
