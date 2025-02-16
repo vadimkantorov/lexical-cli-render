@@ -13,6 +13,7 @@ jobs:
       
       - run: |
           #cat samples/playground.lexical.json | npx ts-node lexical-cli-render.ts
+          npm install @nodejs-loaders/tsx
           cat samples/playground.lexical.json | node --import=@nodejs-loaders/tsx lexical-cli-render.ts
           
           # if does not use JSX/TSX imports, can use node instea of npx ts-node:
