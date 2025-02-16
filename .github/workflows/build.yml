@@ -12,7 +12,8 @@ jobs:
       - run: npm install
       
       - run: |
-          cat samples/playground.lexical.json | npx ts-node lexical-cli-render.ts
+          #cat samples/playground.lexical.json | npx ts-node lexical-cli-render.ts
+          cat samples/playground.lexical.json | node --import=@nodejs-loaders/tsx lexical-cli-render.ts
           
           # if does not use JSX/TSX imports, can use node instea of npx ts-node:
           cat samples/playground-without-emoji.lexical.json | node lexical-cli-render-without-emoji.ts
